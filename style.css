@@ -245,3 +245,10 @@ td:first-child{font:300 1.3rem var(--serif)}
   .note{margin-bottom:.5rem}
   .hero h1{transform:none!important}
 }
+
+/* Mushrooms band on mobile: compact and centred */
+@media (max-width:760px){
+  #mushrooms .head{padding:2.25rem var(--pad) 2rem;margin-bottom:2.25rem;text-align:center}
+  #mushrooms .head h2{font-size:clamp(2rem,9vw,2.6rem)}
+  #mushrooms .head p{margin:.75rem auto 0;max-width:20rem;font-size:.95rem}
+}
