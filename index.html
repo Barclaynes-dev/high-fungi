@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Highfungi Farm | Gourmet and medicinal mushrooms, Armenia</title>
+<meta name="description" content="Fresh and dried mushrooms, extracts, mycelium, grow blocks and grain spawn from a mountain farm in Armenia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo"><i class="bi bi-circle-half"></i> Highfungi</a>
+  <nav id="menu" aria-label="Main">
+    <a href="#mushrooms">Mushrooms</a>
+    <a href="#products">Products</a>
+    <a href="#grow">How to grow</a>
+    <a href="#buy" class="pill">Buy</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i class="bi bi-list"></i></button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="d-top">
+    <a href="#top" class="logo"><i class="bi bi-circle-half"></i> Highfungi</a>
+    <button class="d-close" id="dClose" aria-label="Close menu"><i class="bi bi-x-lg"></i></button>
+  </div>
+  <nav class="d-links" aria-label="Mobile">
+    <a href="#mushrooms" style="--i:0">Mushrooms</a>
+    <a href="#products" style="--i:1">Products</a>
+    <a href="#grow" style="--i:2">How to grow</a>
+    <a href="#buy" style="--i:3">Buy</a>
+  </nav>
+  <a class="btn light d-cta" href="#buy" style="--i:4">See what is available</a>
+  <div class="d-foot" style="--i:5">
+    <p>Get in touch</p>
+    <div class="d-soc">
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" id="dWa" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+      <a href="mailto:hello@highfungi.farm" aria-label="Email"><i class="bi bi-envelope"></i></a>
+    </div>
+  </div>
+</aside>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="note">Highfungi.farm, Armenia</p>
+      <h1>Grown slowly,<br>high in the hills.</h1>
+      <p class="lead">Gourmet and medicinal mushrooms, plus everything you need to grow your own.</p>
+      <div class="actions">
+        <a class="btn" href="#buy">See what is available</a>
+        <a class="link" href="#grow">Learn to grow</a>
+      </div>
+    </div>
+    <div class="arch hero-arch"><img src="https://loremflickr.com/900/1200/mushroom,forest?lock=11" alt="Mushrooms growing in a forest" fetchpriority="high"></div>
+  </section>
+
+  <section class="sec" id="mushrooms">
+    <div class="head"><h2>Six species, one farm</h2><p>Select a mushroom to see what it is known for.</p></div>
+    <div class="species">
+      <ul id="spList" class="sp-list"></ul>
+      <div class="arch sp-arch"><img id="spImg" src="" alt=""></div>
+      <div class="sp-info" id="spInfo" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="sec tint" id="products">
+    <div class="head"><h2>What we offer</h2><p>Finished mushrooms and the materials to grow them.</p></div>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <section class="sec" id="grow">
+    <div class="head"><h2>How to grow</h2><p>Start with the basics, then go species by species.</p></div>
+    <div class="tabs" role="tablist" id="growTabs">
+      <button role="tab" class="on" data-t="global">Global</button>
+      <button role="tab" data-t="species">Species</button>
+      <button role="tab" data-t="conditions">Conditions</button>
+    </div>
+    <div id="growBody" class="grow-body"></div>
+  </section>
+
+  <section class="sec dark" id="buy">
+    <div class="head"><h2>Available now</h2><p>Only what is in stock today. This list changes as we harvest.</p></div>
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nothing in stock in this category right now. Check back after the next harvest.</p>
+  </section>
+</main>
+
+<div class="tray" id="tray" hidden>
+  <span id="trayCount"></span>
+  <a class="btn light" id="send" href="#" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Send order request</a>
+  <button class="clear" id="clear">Clear</button>
+</div>
+
+<footer class="foot">
+  <div><a href="#top" class="logo"><i class="bi bi-circle-half"></i> Highfungi</a><p>Mushroom farm in Armenia.</p></div>
+  <div><p><i class="bi bi-geo-alt"></i> Armenia</p><p><i class="bi bi-globe2"></i> highfungi.farm</p></div>
+  <small>&copy; <span id="yr"></span> Highfungi Farm</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
