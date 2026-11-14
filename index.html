@@ -13,12 +13,15 @@
 </head>
 <body>
 
+<div class="progress" id="prog"></div>
+
 <header class="nav" id="nav">
   <a href="#top" class="logo"><i class="bi bi-circle-half"></i> Highfungi</a>
   <nav id="menu" aria-label="Main">
     <a href="#mushrooms">Mushrooms</a>
     <a href="#products">Products</a>
     <a href="#grow">How to grow</a>
+    <div class="lang" role="group" aria-label="Language"><button class="on" data-l="en" aria-pressed="true">EN</button><button data-l="hy" lang="hy" aria-pressed="false">ՀԱՅ</button></div>
     <a href="#buy" class="pill">Buy</a>
   </nav>
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><i class="bi bi-list"></i></button>
@@ -38,6 +41,7 @@
   </nav>
   <a class="btn light d-cta" href="#buy" style="--i:4">See what is available</a>
   <div class="d-foot" style="--i:5">
+    <div class="lang" role="group" aria-label="Language"><button class="on" data-l="en" aria-pressed="true">EN</button><button data-l="hy" lang="hy" aria-pressed="false">ՀԱՅ</button></div>
     <p>Get in touch</p>
     <div class="d-soc">
       <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
@@ -104,6 +108,8 @@
   <div><p><i class="bi bi-geo-alt"></i> Armenia</p><p><i class="bi bi-globe2"></i> highfungi.farm</p></div>
   <small>&copy; <span id="yr"></span> Highfungi Farm</small>
 </footer>
+
+<div class="toast" id="toast" role="status"></div>
 
 <script src="script.js"></script>
 </body>

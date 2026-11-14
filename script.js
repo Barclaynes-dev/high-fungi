@@ -190,9 +190,11 @@ function grow() {
       <dl class="facts"><div><dt>Temperature</dt><dd>${s.t}</dd></div><div><dt>Humidity</dt><dd>${s.h}</dd></div><div><dt>Substrate</dt><dd>${s.s}</dd></div><div><dt>Time to harvest</dt><dd>${s.d}</dd></div></dl>
       <p class="tip">${s.about}</p>`;
   } else {
-    body.innerHTML = `<div class="tbl"><table><thead><tr><th>Species</th><th>Temperature</th><th>Humidity</th><th>Substrate</th><th>Harvest</th></tr></thead><tbody>${
-      species.map(s => `<tr><td>${s.n}</td><td>${s.t}</td><td>${s.h}</td><td>${s.s}</td><td>${s.d}</td></tr>`).join("")}</tbody></table></div>
+    const g = (lab, str, lo, hi) => { const [a, b] = str.match(/\d+/g).map(Number);
+      return `<div class="g"><div class="g-l"><span>${lab}</span><b>${str}</b></div><div class="g-t"><i style="--l:${(a - lo) / (hi - lo) * 100}%;--w:${(b - a) / (hi - lo) * 100}%"></i></div></div>`; };
+    body.innerHTML = `<div class="gauges">${species.map((s, i) => `<div class="g-row" style="--d:${i * 90}ms"><div class="g-name"><h3>${s.n}</h3><p>${s.s}, ${s.d}</p></div>${g("Temperature", s.t, 0, 40)}${g("Humidity", s.h, 50, 100)}</div>`).join("")}</div>
       <p class="tip">Figures are general guides. Placeholder values to be confirmed by the farm.</p>`;
+    requestAnimationFrame(() => requestAnimationFrame(() => body.querySelector(".gauges").classList.add("in")));
   }
 }
 tabs.onclick = e => { const b = e.target.closest("button"); if (b) { gTab = b.dataset.t; grow(); } };
@@ -273,4 +275,27 @@ grow();
   addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
   mobile.addEventListener("change", update);
   update();
+})();
+
+
+/* ===== scroll progress + language switch ===== */
+(() => {
+  const prog = $("#prog");
+  const update = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+  };
+  let q = false;
+  addEventListener("scroll", () => { if (!q) { q = true; requestAnimationFrame(() => { q = false; update(); }); } }, {passive: true});
+  addEventListener("resize", update);
+  update();
+
+  // language switch: Armenian is not translated yet, so it says so politely
+  const toast = $("#toast"); let t;
+  document.querySelectorAll(".lang").forEach(g => g.addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b || b.dataset.l !== "hy") return;
+    toast.textContent = "Armenian version coming soon";
+    toast.classList.add("show"); clearTimeout(t);
+    t = setTimeout(() => toast.classList.remove("show"), 2400);
+  }));
 })();

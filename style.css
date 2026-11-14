@@ -252,3 +252,46 @@ td:first-child{font:300 1.3rem var(--serif)}
   #mushrooms .head h2{font-size:clamp(2rem,9vw,2.6rem)}
   #mushrooms .head p{margin:.75rem auto 0;max-width:20rem;font-size:.95rem}
 }
+
+/* ===== scroll progress ===== */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--fern);transform-origin:0 0;transform:scaleX(0);z-index:60;pointer-events:none}
+
+/* ===== condition gauges ===== */
+.g-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:2rem;align-items:end;padding:1.4rem 0;border-bottom:1px solid rgba(24,33,26,.15)}
+.g-name h3{font-size:1.5rem}
+.g-name p{font-size:.85rem;color:var(--muted);margin-top:.2rem}
+.g-l{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);margin-bottom:.55rem}
+.g-l b{color:var(--ink);font-weight:600}
+.g-t{position:relative;height:6px;border-radius:9px;background:var(--mist)}
+.g-t i{position:absolute;top:0;bottom:0;left:var(--l);width:var(--w);border-radius:9px;background:var(--moss);transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.g-row{--d:0ms}
+.gauges.in .g-t i{transform:none}
+@media (max-width:760px){.g-row{grid-template-columns:1fr;gap:1rem}}
+
+/* ===== grain on dark surfaces ===== */
+:root{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E")}
+.dark,.foot{position:relative}
+.dark::before,.foot::before,.drawer::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.09;pointer-events:none}
+.dark>*,.foot>*,.drawer>*{position:relative;z-index:1}
+@media (max-width:760px){
+  #mushrooms .head{position:relative}
+  #mushrooms .head::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.09;pointer-events:none}
+  #mushrooms .head>*{position:relative}
+}
+
+/* ===== language switch ===== */
+.lang{display:inline-flex;border:1px solid rgba(24,33,26,.25);border-radius:99px;padding:2px;font-size:.78rem;font-weight:600}
+.lang button{padding:.3rem .75rem;border-radius:99px;transition:background .25s,color .25s}
+.lang [lang=hy]{font-family:'Noto Sans Armenian',system-ui,sans-serif}
+.lang .on{background:var(--ink);color:var(--paper)}
+.drawer .lang{border-color:rgba(183,198,165,.35);margin-bottom:1.5rem}
+.drawer .lang .on{background:var(--sage);color:var(--forest)}
+.toast{position:fixed;left:50%;bottom:1.5rem;z-index:70;transform:translate(-50%,12px);background:var(--forest);color:var(--paper);padding:.7rem 1.3rem;border-radius:99px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* What we offer: no hover effect on mobile */
+@media (max-width:760px){
+  .cat:hover{background:var(--mist);color:var(--ink)}
+  .cat:hover i{color:var(--fern)}
+  .cat:hover p{color:var(--muted)}
+}
