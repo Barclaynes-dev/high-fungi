@@ -248,3 +248,29 @@ grow();
   addEventListener("resize", run);
   run();
 })();
+
+/* ===== mobile hero: the two headline lines drift in opposite directions ===== */
+(() => {
+  const h1 = document.querySelector(".hero h1");
+  const br = h1 && h1.querySelector("br");
+  if (!br || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const line = () => Object.assign(document.createElement("span"), {className: "ln"});
+  const a = line(), b = line();
+  for (let n = h1.firstChild; n && n !== br; n = h1.firstChild) a.appendChild(n);
+  br.remove();
+  while (h1.firstChild) b.appendChild(h1.firstChild);
+  h1.append(a, b);
+
+  const mobile = matchMedia("(max-width:760px)"), MAX = 14; // px, kept inside the page padding
+  let queued = false;
+  const update = () => {
+    queued = false;
+    if (!mobile.matches) { a.style.transform = b.style.transform = ""; return; }
+    const p = Math.min(1, scrollY / (innerHeight * .8));
+    a.style.transform = `translate3d(${(p * MAX).toFixed(1)}px,0,0)`;
+    b.style.transform = `translate3d(${(-p * MAX).toFixed(1)}px,0,0)`;
+  };
+  addEventListener("scroll", () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, {passive: true});
+  mobile.addEventListener("change", update);
+  update();
+})();

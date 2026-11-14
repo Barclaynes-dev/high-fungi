@@ -237,3 +237,11 @@ td:first-child{font:300 1.3rem var(--serif)}
   #mushrooms .head h2{transform:none!important}
   #mushrooms .head p{margin-top:1rem;max-width:none;color:var(--sage)}
 }
+
+/* hero headline lines (each line can move on its own) */
+.ln{display:block}
+@media (max-width:760px){
+  .hero{overflow-x:clip}
+  .note{margin-bottom:.5rem}
+  .hero h1{transform:none!important}
+}
